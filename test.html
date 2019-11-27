@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>枚举映射</title>
+<style>
+
+.containerTest {
+	display: flex;
+	flex-direction: row;
+}
+.itemTest {
+    width: 150px;
+		border:1px solid blue;
+
+}
+.itemDrop1 {
+    width: 150px;
+		border:1px solid blue;
+
+}
+.itemDrop2 {
+    width: 400px;
+		border:1px solid blue;
+
+}
+</style>
+
+<script type="text/javascript">
+function allowDrop(ev)
+{
+ev.preventDefault();
+}
+
+function drag(ev)
+{
+ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+function drop(ev)
+{
+ev.preventDefault();
+var data = ev.dataTransfer.getData("Text");
+ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+
+<body>
+
+<h1>枚举映射</h1>
+<div class="containerTest">
+	<div class="containerTest">
+		<div class="itemDrop1">To XXXEnum</div>
+		<div class="itemDrop2"></div>
+	</div>
+	<div class="itemTest">From YYYEnum</div>
+</div>
+<div class="containerTest">
+	<div class="containerTest">
+		<div class="itemDrop1">Test1</div>
+		<div class="itemDrop2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	<div class="itemTest" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<div class="itemTest" id="test2" draggable="true" ondragstart="drag(event)">Test2</div>
+	</div>
+</div>
+
+<div class="containerTest">
+	<div class="containerTest">
+		<div class="itemDrop1">Test3</div>
+		<div class="itemDrop2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	<div class="itemTest" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<div class="itemTest" id="test4" draggable="true" ondragstart="drag(event)">Test4</div>
+	</div>
+</div>
+
+</body>
+</html>
